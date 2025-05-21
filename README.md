@@ -1,16 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Scout Next Template
+
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and configured with TailwindCSS and ShadCN UI.
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
 bun dev
 ```
 
@@ -18,16 +14,86 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Configuration
 
-## Learn More
+### Package Management
 
-To learn more about Next.js, take a look at the following resources:
+This project uses [Bun](https://bun.sh/) as the package manager:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Install dependencies: `bun add <package-name>`
+- Run scripts: `bun <script-name>`
+- Manage dev dependencies: `bun add -d <package-name>`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Theme Customization
+
+The project uses Tailwind CSS V3 with a theme defined in:
+
+- `tailwind.config.ts` - For fonts, colors, and other design tokens
+- `app/globals.css` - For CSS variables including colors in HSL format
+
+### ShadCN UI Components
+
+This project uses [ShadCN UI](https://ui.shadcn.com) for styled components. The components are incorporated directly into the codebase (not as dependencies), making them fully customizable.
+
+- Component style: "new-york" (configured in components.json)
+- Installation: `bun x shadcn-ui add <component-name>`
+- Example: `bun x shadcn-ui add button`
+
+Current components:
+
+- button
+- slider
+- progress
+- dialog
+- card
+- avatar
+
+### Icon Library
+
+[Lucide React](https://lucide.dev/) is the preferred icon library for this project, as specified in components.json. Always use Lucide icons to maintain consistency:
+
+```tsx
+import { ArrowRight } from "lucide-react";
+
+// Use in components
+<Button>
+  <span>Click me</span>
+  <ArrowRight />
+</Button>;
+```
+
+### Font Configuration
+
+This project uses [Next.js Font Optimization](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) with:
+
+- Inter (sans-serif)
+- IBM Plex Mono (monospace)
+
+To change or update fonts:
+
+1. Modify `app/layout.tsx` to import and configure the desired fonts:
+
+```tsx
+import { NewFont } from "next/font/google";
+
+const newFont = NewFont({
+  variable: "--font-new-font",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
+// Update the body class with the new font variable
+<body className={`${newFont.variable} antialiased`}>
+```
+
+2. Update the font family in `tailwind.config.ts`:
+
+```ts
+fontFamily: {
+  sans: ["var(--font-new-font)"],
+  // other font families
+}
+```
 
 ## Deploy on Vercel
 
