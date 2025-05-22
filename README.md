@@ -1,6 +1,6 @@
 # Scout Next Template
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and configured with TailwindCSS and ShadCN UI.
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and configured with TailwindCSS v4 and ShadCN UI.
 
 ## Getting Started
 
@@ -26,27 +26,59 @@ This project uses [Bun](https://bun.sh/) as the package manager:
 
 ### Theme Customization
 
-The project uses Tailwind CSS V3 with a theme defined in:
+The project uses Tailwind CSS V4 with a theme defined in:
 
-- `tailwind.config.ts` - For fonts, colors, and other design tokens
-- `app/globals.css` - For CSS variables including colors in HSL format
+- `app/globals.css` - For CSS variables including colors in OKLCH format and custom theming
+- Tailwind V4 uses the new `@theme` directive for configuration
 
 ### ShadCN UI Components
 
-This project uses [ShadCN UI](https://ui.shadcn.com) for styled components. The components are incorporated directly into the codebase (not as dependencies), making them fully customizable.
+This project uses [ShadCN UI](https://ui.shadcn.com) for styled components. The components are incorporated directly into the codebase (not as dependencies), making them fully customizable. All components have been installed:
 
-- Component style: "new-york" (configured in components.json)
-- Installation: `bun x shadcn-ui add <component-name>`
-- Example: `bun x shadcn-ui add button`
-
-Current components:
-
-- button
-- slider
-- progress
-- dialog
-- card
+- accordion
+- alert-dialog
+- alert
+- aspect-ratio
 - avatar
+- badge
+- breadcrumb
+- button
+- calendar
+- card
+- carousel
+- chart
+- checkbox
+- collapsible
+- command
+- context-menu
+- dialog
+- drawer
+- dropdown-menu
+- form
+- hover-card
+- input-otp
+- input
+- label
+- menubar
+- navigation-menu
+- pagination
+- popover
+- progress
+- radio-group
+- scroll-area
+- select
+- separator
+- sheet
+- skeleton
+- slider
+- sonner
+- switch
+- table
+- tabs
+- textarea
+- toast
+- toggle-group
+- toggle
 
 ### Icon Library
 
@@ -66,8 +98,7 @@ import { ArrowRight } from "lucide-react";
 
 This project uses [Next.js Font Optimization](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) with:
 
-- Inter (sans-serif)
-- IBM Plex Mono (monospace)
+- Inter Tight (sans-serif)
 
 To change or update fonts:
 
@@ -82,17 +113,13 @@ const newFont = NewFont({
   weight: ["400", "500", "700"],
 });
 
-// Update the body class with the new font variable
 <body className={`${newFont.variable} antialiased`}>
 ```
 
-2. Update the font family in `tailwind.config.ts`:
+2. Update the font family in `app/globals.css`:
 
-```ts
-fontFamily: {
-  sans: ["var(--font-new-font)"],
-  // other font families
-}
+```css
+--font-sans: var(--font-new-font);
 ```
 
 ## Deploy on Vercel

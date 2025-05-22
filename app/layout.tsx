@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Mono } from "next/font/google";
+import { Inter_Tight } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const interTightSans = Inter_Tight({
+  variable: "--font-inter-tight-sans",
   subsets: ["latin"],
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  variable: "--font-ibm-plex-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Next Template",
-  description: "Next.js + Tailwind + ShadCN UI",
+  title: "Scout Next Template",
+  description: "Next.js + TailwindCSS + ShadCN UI",
 };
 
 export default function RootLayout({
@@ -25,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${ibmPlexMono.variable} antialiased`}>
+      <body className={`${interTightSans.variable} antialiased`}>
         {children}
       </body>
     </html>
