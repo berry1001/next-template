@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
-import { Inter_Tight } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const interTightSans = Inter_Tight({
-  variable: "--font-inter-tight-sans",
+const interSans = Inter({
+  variable: "--font-inter-sans",
+  subsets: ["latin"],
+});
+
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair-display",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Scout Next Template",
-  description: "Next.js + TailwindCSS + ShadCN UI",
+  title: "Built by Scout",
+  description: "scout.new",
 };
 
 export default function RootLayout({
@@ -19,7 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${interTightSans.variable} antialiased`}>
+      <body
+        className={`${interSans.variable} ${playfairDisplay.variable} antialiased`}
+      >
         {children}
       </body>
     </html>

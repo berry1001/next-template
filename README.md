@@ -98,7 +98,8 @@ import { ArrowRight } from "lucide-react";
 
 This project uses [Next.js Font Optimization](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) with:
 
-- Inter Tight (sans-serif)
+- Inter (sans-serif)
+- Playfair Display (serif)
 
 To change or update fonts:
 
